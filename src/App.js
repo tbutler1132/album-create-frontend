@@ -3,7 +3,7 @@ import './App.css';
 import Login from './Components/Login'
 import React from 'react'
 import TracksContainer from './Containers/TracksContainer'
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import Welcome from './Components/Welcome'
 
 class App extends React.Component{
@@ -11,9 +11,11 @@ class App extends React.Component{
   render(){
     return(
       <>
+      <Switch>
         <Route path="/login" render ={() => <Login />} /> 
-        <Route path="/welcome" render={() => <Welcome />} />
+        <Route path="/testing" render={() => <Welcome />} />
         <Route path="/tracks" render={() => <TracksContainer />} />
+      </Switch>
       </>
     )
   }
