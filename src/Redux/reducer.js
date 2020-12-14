@@ -13,7 +13,8 @@ import {combineReducers} from 'redux'
 // }
 
 const defaultState = {
-    tracks: []
+    tracks: [],
+    images: []
 }
 
 function tracksReducer(currentState = defaultState.tracks, action) {
@@ -25,8 +26,18 @@ function tracksReducer(currentState = defaultState.tracks, action) {
     }
 }
 
+function imagesReducer(currentState = defaultState.images, action) {
+    switch (action.type) {
+        case "add_images_from_fetch":
+            return action.payload
+        default:
+            return currentState
+    }
+}
+
 const rootReducer = combineReducers({
-    tracks: tracksReducer
+    tracks: tracksReducer,
+    images: imagesReducer
 })
 
 export default rootReducer

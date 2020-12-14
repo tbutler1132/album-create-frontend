@@ -1,5 +1,6 @@
 import React from 'react'
 import PhaseOne from './Phases/PhaseOne'
+import PhaseContainer from '../Containers/PhaseContainer'
 import {Link, Route, Switch} from 'react-router-dom'
 
 class Track extends React.Component{
@@ -14,7 +15,7 @@ class Track extends React.Component{
                     render={() =>
                     <> 
                         <h1>{this.props.songObj.title}</h1>
-                        <PhaseOne songObj={this.props.songObj}/>
+                        <PhaseContainer songObj={this.props.songObj}/>
                     </>
                     } 
                 />
