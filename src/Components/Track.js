@@ -6,7 +6,6 @@ import {Link, Route, Switch} from 'react-router-dom'
 class Track extends React.Component{
 
     render(){
-
         return (
         <div className="track-show">
             <Switch>

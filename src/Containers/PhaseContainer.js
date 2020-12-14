@@ -10,9 +10,23 @@ class PhaseContainer extends React.Component {
         this.props.fetchImages()
     }
 
+    // renderPhaseOne = () => {
+    //     return <PhaseOne songObj={this.props.songObj} images={this.props.images} filterImages={filter}/>
+    // }
+
+    filterSubmissions (submissionType, songObj) {
+        if(submissionType.length > 0){
+            return submissionType.filter(element => element.song.id === songObj.id)
+        }
+        else{
+            return []
+        }
+    }
+
     render(){
+
         return(
-            <PhaseOne songObj={this.props.songObj}/>
+            <PhaseOne songObj={this.props.songObj} images={this.props.images} filterSubmissions={this.filterSubmissions}/>
         )
         
     }
