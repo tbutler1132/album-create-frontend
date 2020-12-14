@@ -7,15 +7,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import {BrowserRouter} from 'react-router-dom'
+import rootReducer from './Redux/reducer'
 
-
-const rootReducer = ( currentState = { tracks: [] }, action) => {
-  if (action.type === "add_tracks_from_fetch"){
-    return {...currentState, tracks: action.payload }
-  } else {
-    return currentState
-  }
-}
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 

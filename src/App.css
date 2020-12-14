@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.track-index {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.track-show {
+  text-align: center;
+  margin-top: 2%;
+}

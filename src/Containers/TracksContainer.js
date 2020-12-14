@@ -23,7 +23,7 @@ class TracksContainer extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className="track-index">
                 {this.props.tracks.length === 0 ? <p>Loading</p> : 
                 <Switch>
                     <Route path="/tracks/:id" render={({match}) => {
