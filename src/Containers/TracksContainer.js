@@ -1,16 +1,12 @@
 import React from 'react'
 import Track from '../Components/Track'
-import {Redirect, Route, Switch} from 'react-router-dom'
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTracks } from '../Redux/action'
+import { compose } from 'redux'
 
 
 class TracksContainer extends React.Component {
-
-    // state = {
-    //     trackArray: [],
-    //     pollResults: []
-    // }
 
     componentDidMount = () => {
         this.props.fetchTracks()
@@ -66,4 +62,7 @@ const mapDispatchToProps = (dispatch) => {
     return {fetchTracks: () => dispatch(getTracks())}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TracksContainer)
+export default compose (
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter)
+    (TracksContainer)
