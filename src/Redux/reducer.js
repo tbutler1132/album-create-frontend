@@ -27,9 +27,12 @@ function tracksReducer(currentState = defaultState.tracks, action) {
 }
 
 function imagesReducer(currentState = defaultState.images, action) {
+    console.log("Image Payload:", action)
     switch (action.type) {
         case "add_images_from_fetch":
             return action.payload
+        case "add_image":
+            return [...currentState, action.payload]
         default:
             return currentState
     }

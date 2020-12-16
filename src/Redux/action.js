@@ -14,3 +14,6 @@ export const getImages = () => {
    }
 
 }
+
+export  const addImage = (imageObj) => ({ type: "add_image", payload: imageObj})
+

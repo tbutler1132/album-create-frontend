@@ -7,6 +7,7 @@ import {Route, Switch, withRouter} from 'react-router-dom'
 import Welcome from './Components/Welcome'
 import NavBar from './Components/NavBar'
 import Signup from './Components/Signup'
+import SubmitForm from './Components/SubmitForm'
 
 class App extends React.Component{
 
@@ -61,11 +62,17 @@ class App extends React.Component{
     })
   }
 
+  logoutHandler = () => {
+    localStorage.removeItem("token")
+    this.props.history.push("/login")
+    this.setState({user: null})
+  }
+
   render(){
     return(
       <>
 
-      <NavBar />
+      <NavBar user={this.state.user} logoutHandler={this.logoutHandler}/>
 
       <Switch>
         <Route path="/login" render={() => <Login submitHandler={this.loginHandler} />} /> 

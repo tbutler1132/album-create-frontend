@@ -18,7 +18,6 @@ class TracksContainer extends React.Component {
     }
 
     render(){
-        console.log(this.props.user)
         return(
             <>
             {this.props.user ?
@@ -29,7 +28,7 @@ class TracksContainer extends React.Component {
                         <Route path="/tracks/:id" render={({match}) => {
                             const id = parseInt(match.params.id)
                             const foundTrack = this.props.tracks.find((track) => track.id === id)
-                            return <Track songObj={foundTrack}/>
+                            return <Track songObj={foundTrack} user={this.props.user}/>
                         }}/>
                         <Route path="/tracks" render={() => 
                             this.renderTracks()   
@@ -41,7 +40,7 @@ class TracksContainer extends React.Component {
             
             :
             
-            <Redirect to='welcome'/>
+            <Redirect to='/tracks'/>
             
             }
             </>

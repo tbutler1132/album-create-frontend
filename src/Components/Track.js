@@ -6,20 +6,20 @@ import {Link, Route, Switch} from 'react-router-dom'
 class Track extends React.Component{
 
     render(){
+
         return (
         <div className="track-show">
             <Switch>
-                <Route path="/tracks/:id"
+                <Route exact path="/tracks/:id"
         
                     render={() =>
                     <> 
                         <h1>{this.props.songObj.title}</h1>
-                        <PhaseContainer songObj={this.props.songObj}/>
+                        <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
                     </>
                     } 
                 />
             
-
                 <Route path="/tracks" 
                 
                     render={() => 
