@@ -9,6 +9,11 @@ function Welcome(){
                 Create Account
             </li>
         </NavLink>
+        <NavLink to="/login">
+            <li>
+                Login
+            </li>
+        </NavLink>
         <NavLink to="/tracks">
             <li>
                 Tracks

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Login from './Components/Login'
 import React from 'react'
@@ -14,6 +14,21 @@ class App extends React.Component{
     user: false
   }
 
+  componentDidMount(){
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch('http://localhost:3000/profile', {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}`},
+      })
+      .then(response => response.json())
+      .then(data => this.setState({user: data.user}))
+    } else {
+      this.props.history.push("/signup")
+    }
+  }
+  
+
   signupHandler = (userObj) => {
     fetch('http://localhost:3000/users', {
       method: "POST",
@@ -24,7 +39,7 @@ class App extends React.Component{
       body: JSON.stringify({user: userObj})
     })
     .then(response => response.json())
-    .then(newUser => this.setState({user: newUser}))
+    .then(data => this.setState({user: data.user}))
   }
 
   loginHandler = (userInfo) => {
@@ -38,7 +53,12 @@ class App extends React.Component{
       body: JSON.stringify({user: userInfo})
     })
     .then(response => response.json())
-    .then(currentUser => this.setState({user: currentUser}, () => this.props.history.push("/tracks")))
+    .then(data => {
+      
+      localStorage.setItem("token", data.jwt)
+      this.setState({user: data.user}, () => this.props.history.push("/tracks"))
+      
+    })
   }
 
   render(){
