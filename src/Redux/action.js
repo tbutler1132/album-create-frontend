@@ -12,8 +12,12 @@ export const getImages = () => {
         .then(response => response.json())
         .then(data => dispatch({type: "add_images_from_fetch", payload: data}))
    }
-
 }
+
+export const addResultToImages = (resultObj) => {
+    ({type: "add_result", payload: resultObj})
+}
+
 
 export  const addImage = (imageObj) => ({ type: "add_image", payload: imageObj})
 
