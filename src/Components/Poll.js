@@ -1,5 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {compose} from 'redux'
 
 class Poll extends React.Component {
 
@@ -55,7 +57,7 @@ class Poll extends React.Component {
         .then(r => r.json())
         .then(resultObj => {
             this.props.voteClickHandler(resultObj)
-            
+            this.props.history.push(`/tracks/${this.props.songObj.id}`)
         })
         this.clickHandler()
 
@@ -95,4 +97,7 @@ const mdp = (dispatch) => {
     return {voteClickHandler: (resultObj) => dispatch({type: "add_result", payload: resultObj})}
 }
 
-export default connect(msp, mdp)(Poll)
+export default compose (
+    connect(msp, mdp),
+    withRouter)
+    (Poll)

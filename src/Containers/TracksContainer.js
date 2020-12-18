@@ -25,7 +25,6 @@ class TracksContainer extends React.Component {
                 <div className="track-index">
                     {this.props.tracks.length === 0 ? <p>Loading</p> : 
                     <Switch>
-                        <Route path="/tracks/ass" render={() => <p>ass</p>}/>
                         <Route path="/tracks/:id" render={({match}) => {
                             console.log(match)
                             const id = parseInt(match.params.id)

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Col, Container, Row} from 'react-bootstrap'
+import {NavLink} from 'react-browser-router'
 
 class LeaderBoard extends React.Component{
 
@@ -35,6 +36,10 @@ renderLeaderBoard = () => {
 
     render(){
         return(
+            <>
+            <p className="song-description">{this.props.songObj.description}</p>
+            <h3>"Vision is a conduit of the fleeting memory"</h3>
+            <h4>Phase One: Select the visual stimulations that will guide our sonic journey</h4>
             <Container>
             {this.props.songObj.ref_imgs.length === 0 ? <p>Need Images</p> : 
                 <div>
@@ -51,6 +56,11 @@ renderLeaderBoard = () => {
                 </div>
             }
             </Container>
+            <NavLink to={`/tracks/${this.props.songObj.id}/submitform`}>Submit an Image</NavLink>
+            <br></br>
+            <NavLink to={`/tracks/${this.props.songObj.id}/poll`}>Create a poll</NavLink>
+            <h4><br></br>Select the auditory stimulations that will guide our sonic journey</h4>
+            </>
         )
     }
 }
