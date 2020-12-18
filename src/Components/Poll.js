@@ -11,9 +11,10 @@ class Poll extends React.Component {
     
     
     selectPollChoices = () => {
+        console.log(this.props.images)
             const shuffled = this.props.filterSubmissions(this.props.images, this.props.songObj).sort(() => 0.5 - Math.random());
             let choices = shuffled.slice(0, 2);
-            return choices.map(choice => choice.id)
+            return choices.map(choice => choice)
     }
 
     componentDidMount = () => {
@@ -35,8 +36,7 @@ class Poll extends React.Component {
     }
 
     voteClickHandler = (e) => {
-        console.log(parseInt(e.target.previousSibling.textContent))
-        let optionId = (e.target.name === "1") ? parseInt(e.target.previousSibling.textContent) : parseInt(e.target.previousSibling.textContent)
+        let optionId = (e.target.name === "1") ? parseInt(e.target.previousSibling.id) : parseInt(e.target.previousSibling.id)
         const newResult = {
             win: true,
             winnable_id: optionId,
@@ -57,16 +57,18 @@ class Poll extends React.Component {
             this.props.voteClickHandler(resultObj)
             
         })
+        this.props.pollClickHandler()
 
     }
 
     render(){
+        const choices = this.selectPollChoices()
         return(
             <div>
-                <p>{this.selectPollChoices()[0]}</p>
-                {this.selectPollChoices()[0] !== null ? <button name="1" onClick={this.voteClickHandler}>Vote</button> : null}
-                <p>{this.selectPollChoices()[1]}</p>
-                {this.selectPollChoices()[1] !== null ? <button name="2" onClick={this.voteClickHandler}>Vote</button> : null}
+                <img src={choices[0].img_url} id={choices[0].id} alt="Ye" width="300" height="300" />
+                {choices[0] !== null ? <button name="1" onClick={this.voteClickHandler}>Vote</button> : null}
+                <img src={choices[1].img_url} id={choices[1].id} alt="Ye" width="300" height="300" />
+                {choices[1] !== null ? <button name="2" onClick={this.voteClickHandler}>Vote</button> : null}
             </div>
         )
     }

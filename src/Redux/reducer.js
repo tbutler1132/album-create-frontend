@@ -35,6 +35,7 @@ function imagesReducer(currentState = defaultState.images, action) {
         case "add_image":
             return [...currentState, action.payload]
         case "add_result":
+            console.log(currentState)
             const image = currentState.find(image => image.id === action.payload.winnable.id)
             const imageIndex = currentState.indexOf(image)
             const newArray = currentState.slice()

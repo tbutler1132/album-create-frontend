@@ -3,6 +3,8 @@ import { Switch, Route, NavLink } from 'react-router-dom'
 import SubmitForm from '../SubmitForm'
 import Poll from '../Poll'
 import {connect} from 'react-redux'
+import {Row, Container, Col} from 'react-bootstrap'
+
 
 
 class PhaseOne extends React.Component {
@@ -34,16 +36,23 @@ class PhaseOne extends React.Component {
     
     renderLeaderBoard = () => {
         return this.createLeaderboard().map(element =>
-        <div key={element.image.id}>
+        <div className="leaderboard-element" key={element.image.id}>
+            <Col>
+            <img src={element.image.img_url} alt="Ye" width="150" height="150" />
             <p>Votes: {element.wins}</p>
-            <img src={element.image.img_url} alt="Ye" width="300" height="300" /> 
+            </Col> 
         </div> 
         
         )
     }
 
     clickHandler = () => {
-        this.setState({pollClicked: true})
+        if (this.state.pollClicked === false){
+            this.setState({pollClicked: true})
+        }
+        else{
+            this.setState({pollClicked: false})
+        }
     }
 
     render(){
@@ -54,14 +63,44 @@ class PhaseOne extends React.Component {
 
                 <>
                 <h3>"Vision is a conduit of the fleeting memory"</h3>
-                <h4>Phase One: Select the visual and auditory stimulations that will guide our sonic journey</h4>
-                {this.props.songObj.ref_imgs.length === 0 ? <p>Need Images</p> : this.renderLeaderBoard()}
-                <SubmitForm user={this.props.user} songObj={this.props.songObj}/>
-                {this.state.pollClicked ? 
-                    <Poll filterSubmissions={this.props.filterSubmissions} songObj={this.props.songObj} user={this.props.user}/>
-                    :
-                    <p onClick={this.clickHandler}>Generate Poll</p>
-                }
+                <h4>Phase One: Select the visual stimulations that will guide our sonic journey</h4>
+                {/* <Switch> */}
+                {/* <Route path="/tracks/:id"
+                render={() => */}
+                    {this.props.songObj.ref_imgs.length === 0 ? <p>Need Images</p> : 
+                    <Container>
+                        <div>
+                            <Row >
+                                <Col className="leaderboard-number">1</Col>
+                                <Col className="leaderboard-number">2</Col>
+                                <Col className="leaderboard-number">3</Col>
+                                <Col className="leaderboard-number">4</Col>
+                                <Col className="leaderboard-number">5</Col>
+                            </Row>
+                            <Row>
+                                {this.renderLeaderBoard()}
+                            </Row>
+                        </div>
+                    </Container>
+                    }
+                    {/* }/> */}
+    
+
+            
+                        <SubmitForm user={this.props.user} songObj={this.props.songObj}/>
+           
+
+                    
+                        {this.state.pollClicked ?
+
+                        <Poll filterSubmissions={this.props.filterSubmissions} songObj={this.props.songObj} user={this.props.user} pollClickHandler={this.clickHandler}/>
+                        :
+                        <p onClick={this.clickHandler}>Generate Poll</p>
+
+                        }
+           
+                {/* </Switch> */}
+                <h4>Select the auditory stimulations that will guide our sonic journey</h4>
                 </>
 
             </>

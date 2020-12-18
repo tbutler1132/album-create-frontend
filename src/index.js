@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import {BrowserRouter, Route} from 'react-router-dom'
 import rootReducer from './Redux/reducer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

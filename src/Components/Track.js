@@ -10,11 +10,12 @@ class Track extends React.Component{
         return (
         <div className="track-show">
             <Switch>
-                <Route exact path="/tracks/:id"
+                <Route path="/tracks/:id"
         
                     render={() =>
                     <> 
                         <h1>{this.props.songObj.title}</h1>
+                        <p className="song-description">{this.props.songObj.description}</p>
                         <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
                     </>
                     } 

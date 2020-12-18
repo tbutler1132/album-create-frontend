@@ -39,10 +39,35 @@
 
 .track-index {
   text-align: center;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .track-show {
   text-align: center;
   margin-top: 2%;
+}
+
+.leaderboard {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.leaderboard-element {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.leaderboard-number {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-style: double;
+}
+
+.submit-form {
+  margin-top: 2%;
+}
+
+.song-description {
+  border-style: double;
+  border-width: 50%;
 }

@@ -15,9 +15,9 @@ export const getImages = () => {
 }
 
 export const addResultToImages = (resultObj) => {
-    ({type: "add_result", payload: resultObj})
+    return ({type: "add_result", payload: resultObj})
 }
 
 
-export  const addImage = (imageObj) => ({ type: "add_image", payload: imageObj})
+export  const addImage = (imageObj) =>{ return ({ type: "add_image", payload: imageObj}) }
 
