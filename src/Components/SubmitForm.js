@@ -41,6 +41,7 @@ class SubmitForm extends React.Component {
 
     render(){
         return(
+            
             <div className="submit-form">
                 <form onSubmit={this.submitHandler}>
                         <input type="text" name="imageUrl" placeholder="url" value={this.state.imageUrl} onChange={this.changeHandler}/>
@@ -48,6 +49,7 @@ class SubmitForm extends React.Component {
                         <input type='submit' name="submit" value="Submit Image"/>
                 </form>
             </div>
+            
         )
     }
 }

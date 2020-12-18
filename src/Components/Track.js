@@ -1,5 +1,5 @@
 import React from 'react'
-import PhaseOne from './Phases/PhaseOne'
+import PhaseOne from './Phases/PhaseOne/PhaseOneContainer.js'
 import PhaseContainer from '../Containers/PhaseContainer'
 import {Link, Route, Switch} from 'react-router-dom'
 
@@ -12,26 +12,25 @@ class Track extends React.Component{
             <Switch>
                 <Route path="/tracks/:id"
         
-                    render={() =>
-                    <> 
-                        <h1>{this.props.songObj.title}</h1>
-                        <p className="song-description">{this.props.songObj.description}</p>
-                        <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
-                    </>
+                    render={(match) =>
+                    {
+                        console.log(match)
+                        return <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
+                    }
+
                     } 
                 />
             
-                <Route path="/tracks" 
                 
-                    render={() => 
+                
+                  
                         <>
                         <Link to={`tracks/${this.props.songObj.id}`}>
                             <h1>{this.props.songObj.title}</h1>
                         </Link>
                             <h2>Phase: {this.props.songObj.phase}</h2>
                         </>
-                    }
-                />
+           
 
 
             </Switch>

@@ -1,9 +1,9 @@
 import React from 'react'
-import PhaseOne from '../Components/Phases/PhaseOne'
+import PhaseOneContainer from '../Components/Phases/PhaseOne/PhaseOneContainer.js'
 import { connect } from 'react-redux'
 import { getImages } from '../Redux/action'
 import { Switch, Route, NavLink } from 'react-router-dom'
-import SubmitForm from '../Components/SubmitForm'
+
 
 
 class PhaseContainer extends React.Component {
@@ -26,11 +26,11 @@ class PhaseContainer extends React.Component {
     }
 
     render(){
-
+        console.log(this.props)
         return(
-
-                    <PhaseOne songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>
-
+            
+                    <PhaseOneContainer songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>
+            
 
         )
         

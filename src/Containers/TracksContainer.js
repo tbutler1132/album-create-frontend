@@ -25,13 +25,16 @@ class TracksContainer extends React.Component {
                 <div className="track-index">
                     {this.props.tracks.length === 0 ? <p>Loading</p> : 
                     <Switch>
+                        <Route path="/tracks/ass" render={() => <p>ass</p>}/>
                         <Route path="/tracks/:id" render={({match}) => {
+                            console.log(match)
                             const id = parseInt(match.params.id)
                             const foundTrack = this.props.tracks.find((track) => track.id === id)
                             return <Track songObj={foundTrack} user={this.props.user}/>
                         }}/>
                         <Route path="/tracks" render={() => 
                             this.renderTracks()   
+                            
                         } />
                     </Switch>
                     }
@@ -39,8 +42,10 @@ class TracksContainer extends React.Component {
                 
             
             :
+
+            null
             
-            <Redirect to='/tracks'/>
+            //<Redirect to='/tracks'/>
             
             }
             </>

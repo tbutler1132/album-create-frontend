@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Welcome(){
-    return <p>Welcome to the journey</p>
+    return <h1>Welcome to the journey</h1>
 }
 
 export default Welcome
