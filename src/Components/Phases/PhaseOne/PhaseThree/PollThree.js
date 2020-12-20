@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
 
-class Poll extends React.Component {
+class PollThree extends React.Component {
 
     
     state = {
@@ -13,15 +13,19 @@ class Poll extends React.Component {
     
     
     
-    selectPollChoices = () => {
-            const shuffled = this.props.filterSubmissions(this.props.images, this.props.songObj).sort(() => 0.5 - Math.random());
-            let choices = shuffled.slice(0, 2);
-            return choices.map(choice => choice)
+    // selectPollChoices = () => {
+    //         const shuffled = this.props.filterSubmissions(this.props.images, this.props.songObj).sort(() => 0.5 - Math.random());
+    //         let choices = shuffled.slice(0, 2);
+    //         return choices.map(choice => choice)
+    // }
+
+    selectVocalPollChoices = () => {
+        return this.props.selectPollChoices(this.props.vocals, this.props.songObj)
     }
 
     componentDidMount = () => {
         const newPoll = {
-            phase: 1,
+            phase: 3,
             user_id: this.props.user.id
         }
         const options = {
@@ -34,7 +38,8 @@ class Poll extends React.Component {
           }
             fetch("http://localhost:3000/polls", options)
             .then(response => response.json())
-            .then(data => this.setState({pollId: data.id}))
+            .then(data => {
+                this.setState({pollId: data.id})})
     }
 
     voteClickHandler = (e) => {
@@ -42,7 +47,7 @@ class Poll extends React.Component {
         const newResult = {
             win: true,
             winnable_id: optionId,
-            winnable_type: "RefImg",
+            winnable_type: "Vocal",
             poll_id: this.state.pollId, // POST Poll in track
         }
         const options = {
@@ -56,12 +61,26 @@ class Poll extends React.Component {
         fetch("http://localhost:3000/results", options)
         .then(r => r.json())
         .then(resultObj => {
+            console.log(resultObj)
             this.props.voteClickHandler(resultObj)
-            this.props.history.push(`/tracks/${this.props.songObj.id}`)
+            this.props.history.push(`/tracks/${this.props.songObj.id}/phasetwo`)
         })
         this.clickHandler()
 
     }
+
+    // imageVoteClickHandler = () => {
+    //     const options = this.props.voteClickHandler("RefImg", this.state.pollId)
+    //     console.log(options)
+    //     fetch("http://localhost:3000/results", options)
+    //     .then(r => r.json())
+    //     .then(resultObj => {
+    //         console.log("Fetch", resultObj)
+    //         this.props.voteClickHandler(resultObj)
+    //         this.props.history.push(`/tracks/${this.props.songObj.id}`)
+    //     })
+    //     this.clickHandler()
+    // }
 
     clickHandler = () => {
         if (this.state.pollClicked === false){
@@ -73,31 +92,29 @@ class Poll extends React.Component {
     }
 
     render(){
-        console.log(this.state.pollClicked)
-        const choices = this.selectPollChoices()
+        const choices = this.selectVocalPollChoices()
         return(
-            this.state.pollClicked ?
+
             <div>
-                <img src={choices[0].img_url} id={choices[0].id} alt="Ye" width="300" height="300" />
+                <p id={choices[0].id}>{choices[0].id}</p>
                 {choices[0] !== null ? <button name="1" onClick={this.voteClickHandler}>Vote</button> : null}
-                <img src={choices[1].img_url} id={choices[1].id} alt="Ye" width="300" height="300" />
+                <p id={choices[1].id}>{choices[1].id}</p>
                 {choices[1] !== null ? <button name="2" onClick={this.voteClickHandler}>Vote</button> : null}
             </div>
-            :
-            <p onClick={this.clickHandler}>Generate Poll</p>
+
         )
     }
 }
 
 const msp = (state) => {
-    return {images: state.images}
+    return {vocals: state.vocals  }
 }
 
 const mdp = (dispatch) => {
-    return {voteClickHandler: (resultObj) => dispatch({type: "add_result", payload: resultObj})}
+    return {voteClickHandler: (resultObj) => dispatch({type: "add_vocal_result", payload: resultObj})}
 }
 
 export default compose (
     connect(msp, mdp),
     withRouter)
-    (Poll)
+    (PollThree)

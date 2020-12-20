@@ -7,7 +7,8 @@ import {Route, Switch, withRouter} from 'react-router-dom'
 import Welcome from './Components/Welcome'
 import NavBar from './Components/NavBar'
 import Signup from './Components/Signup'
-import SubmitForm from './Components/SubmitForm'
+import UserProfile from './Components/UserProfile'
+// import SubmitForm from './Components/SubmitForm'
 
 class App extends React.Component{
 
@@ -57,7 +58,7 @@ class App extends React.Component{
     .then(data => {
       
       localStorage.setItem("token", data.jwt)
-      this.setState({user: data.user}, () => this.props.history.push("/tracks"))
+      this.setState({user: data.user}, () => this.props.history.push("/welcome"))
       
     })
   }
@@ -78,8 +79,9 @@ class App extends React.Component{
         <Route path="/login" render={() => <Login submitHandler={this.loginHandler} />} /> 
         <Route path="/signup" render={() => <Signup submitHandler={this.signupHandler} />} />
         <Route path="/login" render ={() => <Login />} /> 
-        <Route path="/testing" render={() => <Welcome />} />
+        <Route path="/welcome" render={() => <Welcome />} />
         <Route path="/tracks" render={() => <TracksContainer user={this.state.user} />} />
+        <Route path="/profile" render={() => <UserProfile user={this.state.user} />} />
       </Switch>
       </>
     )

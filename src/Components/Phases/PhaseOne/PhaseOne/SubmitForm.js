@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {addImage} from '../Redux/action'
+import {addImage} from '../../../../Redux/action'
 
 class SubmitForm extends React.Component {
 

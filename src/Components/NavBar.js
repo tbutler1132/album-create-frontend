@@ -1,35 +1,55 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import {Navbar, Nav} from 'react-bootstrap'
 
 function Welcome(props){
     return (
-    <ul>
-        <NavLink to="/tracks">
-            <li>
-                Album Page
-            </li>
-        </NavLink>
-        {props.user ?
-        <>
-            <li onClick={props.logoutHandler}>Logout</li>
-        </>
+    <div >
+        <Navbar variant="dark" bg="dark">
+        <Navbar.Brand href="/tracks">Navbar</Navbar.Brand>
+        <Nav>
             
-            :
-         <>
-        <NavLink to="/login">
-            <li>
-                Login
-            </li>
-        </NavLink>
+            
 
-        <NavLink to="/signup">
-            <li>
-                Create Account
-            </li>
-        </NavLink>
-        </>
-        }
-    </ul>
+            {props.user ?
+            <>
+            <NavLink style={{ textDecoration: 'none' }} to="/tracks">
+                    
+                        Album Page
+
+            </NavLink>
+
+            <p onClick={props.logoutHandler}>
+                Logout
+            </p>
+
+            <NavLink to="/profile">
+                Your proifile
+            </NavLink>
+            
+            </>
+                
+                :
+            <>
+            
+                <NavLink to="/login">
+                    
+                        Login
+                    
+                </NavLink>
+            
+            
+                <NavLink to="/signup">
+                    
+                        Create Account
+                    
+                </NavLink>
+            
+            </>
+            }
+        </Nav>
+        </Navbar>
+    </div>
     )
 }
 
