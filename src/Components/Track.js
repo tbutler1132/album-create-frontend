@@ -4,6 +4,7 @@ import PhaseContainer from '../Containers/PhaseContainer'
 import {Link, Route, Switch} from 'react-router-dom'
 import {Container, Row, Col} from 'react-bootstrap'
 
+
 class Track extends React.Component{
 
     renderPhaseDescriptions = () => {
@@ -36,7 +37,7 @@ class Track extends React.Component{
                 
                   
                         <>
-                        <Container>
+                        <Container >
                             <Row>
                             <Col>
                             <Link to={`tracks/${this.props.songObj.id}/phaseone`} style={{ textDecoration: 'none' }} className="track-navlink">

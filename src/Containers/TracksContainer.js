@@ -30,8 +30,13 @@ class TracksContainer extends React.Component {
                             const foundTrack = this.props.tracks.find((track) => track.id === id)
                             return <Track songObj={foundTrack} user={this.props.user}/>
                         }}/>
-                        <Route path="/tracks" render={() => 
-                            this.renderTracks()   
+                        <Route path="/tracks" render={() =>
+                        <>
+                            <h1 id="album-page-header">This is our salvation</h1> 
+                            <div className="track-container">
+                            {this.renderTracks()}
+                            </div>
+                        </>   
                             
                         } />
                     </Switch>

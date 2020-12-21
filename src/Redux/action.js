@@ -30,6 +30,18 @@ export const getVocals = () => {
    }
 }
 
+export const getThreads = () => {
+    return function (dispatch) {
+        fetch("http://localhost:3000/comment_threads")
+        .then(response => response.json())
+        .then(data => dispatch({type: "add_threads_from_fetch", payload: data}))
+   }
+}
+
+export const addCommentToThreads = (commentObj) => {
+    return ({type: "add_comment", payload: commentObj})
+}
+
 export const addResultToImages = (resultObj) => {
     return ({type: "add_image_result", payload: resultObj})
 }

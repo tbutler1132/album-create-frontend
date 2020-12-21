@@ -18,7 +18,8 @@ const defaultState = {
     polls: [],
     images: [],
     beats: [],
-    vocals: []
+    vocals: [],
+    threads: []
 }
 
 function tracksReducer(currentState = defaultState.tracks, action) {
@@ -84,6 +85,22 @@ function resultsReducer(currentState = defaultState.results, action) {
     return currentState
 }
 
+function threadsReducer(currentState = defaultState.threads, action) {
+    switch (action.type) {
+        case "add_threads_from_fetch":
+            return action.payload
+        case "add_comment":
+            const thread = currentState.find(comment => comment.id === action.payload.comment_thread.id)
+            const threadIndex = currentState.indexOf(thread)
+            const newArray = currentState.slice()
+            const updatedResults = newArray[threadIndex].comments.push(action.payload)
+            console.log("new array", newArray)
+            return newArray
+        default:
+            return currentState
+    }
+}
+
 function pollsReducer(currentState = defaultState.polls, action) {
     return currentState
 }
@@ -93,7 +110,8 @@ const rootReducer = combineReducers({
     results: resultsReducer,
     images: imagesReducer,
     beats: beatsReducer,
-    vocals: vocalsReducer
+    vocals: vocalsReducer,
+    threads: threadsReducer
 })
 
 export default rootReducer

@@ -3,10 +3,22 @@ import React from 'react'
 class UserProfile extends React.Component{
 
     totalContributions = () => {
+        return this.props.user.ref_imgs.length + this.props.user.beats.length + this.props.user.vocals.length
+    }
+    
+    reputation = () => {
+        const contributionScore = this.totalContributions() * 2
+        const pollScore = this.props.user.polls.length / 2
+        return contributionScore + pollScore
+    }
+
+    userStats = () => {
         if (this.props.user)
         return (
-            <>   
-            <p>You have submitted {this.props.user.ref_imgs.length + this.props.user.beats.length + this.props.user.vocals.length} contributions</p>
+            <>
+            <h1>{this.props.user.username}'s profile</h1>
+            <p>Reputation: {this.reputation()}</p>   
+            <p>You have submitted {this.totalContributions()} contributions</p>
             <p>You have voted on {this.props.user.polls.length} polls</p>
             </>
          
@@ -17,9 +29,9 @@ class UserProfile extends React.Component{
     render(){
         console.log(this.props.user)
         return(
-            <>
-            {this.totalContributions()}
-            </>
+            <div className="user-profile">
+            {this.userStats()}
+            </div>
         )
     }
 

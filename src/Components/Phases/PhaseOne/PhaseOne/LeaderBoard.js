@@ -31,8 +31,8 @@ renderLeaderBoard = () => {
     <div className="leaderboard-element" key={element.submission.id}>
         <Col>
         <img src={element.submission.img_url} alt="Ye" width="150" height="150" />
-        <p>{element.submission.title}</p>
-        <p>Votes: {element.wins}</p>
+        {/* <p>{element.submission.title}</p>
+        <p>Votes: {element.wins}</p> */}
         </Col> 
     </div> 
     

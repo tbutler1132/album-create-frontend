@@ -1,10 +1,12 @@
 import React from 'react'
 import PhaseOneContainer from '../Components/Phases/PhaseOne/PhaseOneContainer.js'
 import { connect } from 'react-redux'
-import { getImages, getBeats, getVocals } from '../Redux/action'
+import { getImages, getBeats, getVocals, getThreads } from '../Redux/action'
 import { Switch, Route, NavLink } from 'react-router-dom'
 import PhaseTwoContainer from '../Components/Phases/PhaseOne/PhaseTwoContainer.js'
 import PhaseThreeContainer from '../Components/Phases/PhaseOne/PhaseThreeContainer'
+
+
 
 
 
@@ -14,6 +16,7 @@ class PhaseContainer extends React.Component {
         this.props.fetchImages()
         this.props.fetchBeats()
         this.props.fetchVocals()
+        this.props.fetchThreads()
     }
 
     voteClickOptions = (newResult) => {
@@ -86,6 +89,16 @@ class PhaseContainer extends React.Component {
         }
     }
 
+ 
+
+    filterCommentThreads = () => {
+        return this.props.threads.filter(thread => thread.song.id === this.props.songObj.id)
+    }
+
+    phaseOneThread = () => {
+        return this.filterCommentThreads().filter(thread => thread.phase === this.props.songObj.phase)
+    }
+
     render(){
         return(
                 <>
@@ -94,7 +107,7 @@ class PhaseContainer extends React.Component {
                     <p className="song-description">{this.props.songObj.description}</p>
                 </div>
                 <Switch>
-                    <Route path={`/tracks/${this.props.songObj.id}/phaseone`} render={() => <PhaseOneContainer voteClickHandler={this.voteClickHandler} selectPollChoices={this.selectPollChoices} createLeaderBoard={this.createLeaderBoard} songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>}/>
+                    <Route path={`/tracks/${this.props.songObj.id}/phaseone`} render={() => <PhaseOneContainer commentThread={this.phaseOneThread()} voteClickHandler={this.voteClickHandler} selectPollChoices={this.selectPollChoices} createLeaderBoard={this.createLeaderBoard} songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>}/>
                     <Route path={`/tracks/${this.props.songObj.id}/phasetwo`} render={() => <PhaseTwoContainer voteClickHandler={this.voteClickHandler} selectPollChoices={this.selectPollChoices} createLeaderBoard={this.createLeaderBoard} songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>}/>
                     <Route path={`/tracks/${this.props.songObj.id}/phasethree`} render={() => <PhaseThreeContainer voteClickHandler={this.voteClickHandler} selectPollChoices={this.selectPollChoices} createLeaderBoard={this.createLeaderBoard} songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>}/>
                     {/* <Route path={`/tracks/${this.props.songObj.id}/phasefour`} render={() => <PhaseFourContainer voteClickHandler={this.voteClickHandler} selectPollChoices={this.selectPollChoices} createLeaderBoard={this.createLeaderBoard} songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>}/> */}
@@ -108,15 +121,15 @@ class PhaseContainer extends React.Component {
     
 }
     const msp = (state) => {
-        return {images: state.images, beats: state.beats}
+        return {images: state.images, beats: state.beats, threads: state.threads}
     }
     
     const mdp = (dispatch) => {
         return { 
             fetchImages: () => dispatch(getImages()),
             fetchBeats: () => dispatch(getBeats()),
-            fetchVocals: () => dispatch(getVocals())
-            
+            fetchVocals: () => dispatch(getVocals()),
+            fetchThreads: () => dispatch(getThreads())    
         }
     }
     
