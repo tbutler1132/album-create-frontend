@@ -2,12 +2,12 @@ import React from 'react'
 import {Container, Col, Row} from 'react-bootstrap'
 import {NavLink} from 'react-browser-router'
 
-class ImageIndex extends React.Component{
+class BeatIndex extends React.Component{
 
 
     renderImages = () => {
         return this.props.filteredSubmissions.map(image =>
-            <div key={image.id} className="image-index">
+            <div className="image-index">
 
                 <Col>
                 <p>{image.title}</p>
@@ -39,4 +39,4 @@ class ImageIndex extends React.Component{
     }
 }
 
-export default ImageIndex
+export default BeatIndex

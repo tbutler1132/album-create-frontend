@@ -1,40 +1,50 @@
 import React from 'react' 
-import { Switch, Route} from 'react-router-dom'
-import SubmitForm from './PhaseOne/SubmitForm'
+import { Switch, Route, NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
-import LeaderBoardTwo from './PhaseTwo/LeaderBoardTwo'
-import BeatIndex from '../../ImageIndex'
-import PollTwo from './PhaseTwo/PollTwo'
+import Thread from '../../../Components/Thread'
+import { getBeats, getImages} from '../../../Redux/action'
+import {filterSubmissions} from '../../../Helpers'
+import PhaseOneInProgress from './PhaseOne/PhaseOneInProgress'
+import PhaseOneComplete from './PhaseOne/PhaseOneComplete'
 
 
 
 class PhaseTwo extends React.Component {
 
     
+    componentDidMount = () => {
+        this.props.fetchBeats()
+        this.props.fetchImages()
+    }
 
-    filterBeats = () => {
-        return this.props.filterSubmissions(this.props.beats, this.props.songObj)
+    filteredBeats = () => {
+        return filterSubmissions(this.props.beats, this.props.songObj)
+    }
+
+    renderCommentThread = () => {
+        return this.props.commentThread.map(thread => <Thread key={thread.id} threadObj={thread} songObj={this.props.songObj} user={this.props.user}/>)
+    }
+
+    winningImage = () => {
+        return filterSubmissions(this.props.images, this.props.songObj).find(submission => submission.selected === true)
     }
 
     render(){
-        console.log(this.props.createLeaderBoard)
+        console.log(this.props.images)
         return(
             <>
             {this.props.beats.length === 0 ? <p>Loading</p> :
             <>
-
+            
                 <>
-                {/* <h1>{this.props.songObj.title}</h1> */}
-
-              
-               
-                <Switch>
-                    <Route exact path={`/tracks/${this.props.songObj.id}/phasetwo`} render={(match) => <LeaderBoardTwo createLeaderBoard={this.props.createLeaderBoard} submissions={this.props.beats} filterSubmissions={this.filterBeats()} songObj={this.props.songObj}/>}/>
-                    <Route path={`/tracks/${this.props.songObj.id}/phasetwo/poll`} render={() => <PollTwo selectPollChoices={this.props.selectPollChoices} filterSubmissions={this.props.filterSubmissions} songObj={this.props.songObj} user={this.props.user} />}/>
-                    {/* <Route path={`/tracks/${this.props.songObj.id}/submitform/phasetwo`} render={() => <SubmitForm user={this.props.user} songObj={this.props.songObj}/>}/>
-                    <Route path={`/tracks/${this.props.songObj.id}/Beats`} render={() => <ImageIndex filterBeats={this.filterBeats()}/>}/>  */}
-                </Switch>
-
+     
+                <PhaseOneComplete winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
+                <PhaseOneInProgress type="Beat" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredBeats()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
+                
+                
+                <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
+                    View Discussion
+                </NavLink>
                 
                 </>
 
@@ -46,7 +56,18 @@ class PhaseTwo extends React.Component {
 }
 
 const msp = (state) => {
-    return {beats: state.beats}
+    return {
+        beats: state.beats,
+        images: state.images
+    }
 }
 
-export default connect(msp)(PhaseTwo)
+const mdp = (dispatch) => {
+    return { 
+        fetchBeats: () => dispatch(getBeats()),
+        fetchImages: () => dispatch(getImages()),
+        voteClickHandler: (resultObj) => dispatch({type: "add_beat_result", payload: resultObj})
+    }
+}
+
+export default connect(msp, mdp)(PhaseTwo)

@@ -32,7 +32,7 @@ class TracksContainer extends React.Component {
                         }}/>
                         <Route path="/tracks" render={() =>
                         <>
-                            <h1 id="album-page-header">This is our salvation</h1> 
+                            <h1 id="album-page-header">Album 1</h1> 
                             <div className="track-container">
                             {this.renderTracks()}
                             </div>

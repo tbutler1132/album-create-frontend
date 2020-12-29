@@ -42,12 +42,12 @@ export const addCommentToThreads = (commentObj) => {
     return ({type: "add_comment", payload: commentObj})
 }
 
-export const addResultToImages = (resultObj) => {
-    return ({type: "add_image_result", payload: resultObj})
+export const addResult = (resultObj) => {
+    return ({type: "add_result", payload: resultObj})
 }
 
 export const addResultToBeats = (resultObj) => {
-    return ({type: "add_beat_result", payload: resultObj})
+    return ({type: "add_result", payload: resultObj})
 }
 
 export const addResultToVocals = (resultObj) => {

@@ -7,9 +7,10 @@ class UserProfile extends React.Component{
     }
     
     reputation = () => {
-        const contributionScore = this.totalContributions() * 2
+        const contributionScore = this.totalContributions() * 20
         const pollScore = this.props.user.polls.length / 2
-        return contributionScore + pollScore
+        const commentScore = this.props.user.comments.length
+        return contributionScore + pollScore + commentScore
     }
 
     userStats = () => {
@@ -20,6 +21,7 @@ class UserProfile extends React.Component{
             <p>Reputation: {this.reputation()}</p>   
             <p>You have submitted {this.totalContributions()} contributions</p>
             <p>You have voted on {this.props.user.polls.length} polls</p>
+            <p>You have left {this.props.user.comments.length} comments</p>
             </>
          
         )

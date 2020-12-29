@@ -1,5 +1,4 @@
 import React from 'react'
-import PhaseOne from './Phases/PhaseOne/PhaseOneContainer.js'
 import PhaseContainer from '../Containers/PhaseContainer'
 import {Link, Route, Switch} from 'react-router-dom'
 import {Container, Row, Col} from 'react-bootstrap'
@@ -10,8 +9,15 @@ class Track extends React.Component{
     renderPhaseDescriptions = () => {
         if (this.props.songObj.phase === 1){
             return <p>Select references</p>
-        } else if (this.props.songObj.phase === 3){
+        } 
+        else if (this.props.songObj.phase === 2){
+            return <p>Select Beats</p>
+        }
+        else if (this.props.songObj.phase === 3){
             return <p>Select vocals</p>
+        }
+        else if (this.props.songObj.phase === 4){
+            return <p>Creative Complete</p>
         }
         else {
            return null
@@ -25,7 +31,7 @@ class Track extends React.Component{
             <Switch>
                 <Route path="/tracks/:id"
         
-                    render={(match) =>
+                    render={() =>
                     {
                         return <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
                     }
@@ -40,7 +46,7 @@ class Track extends React.Component{
                         <Container >
                             <Row>
                             <Col>
-                            <Link to={`tracks/${this.props.songObj.id}/phaseone`} style={{ textDecoration: 'none' }} className="track-navlink">
+                            <Link to={`tracks/${this.props.songObj.id}/${this.props.songObj.phase}`} style={{ textDecoration: 'none' }} className="track-navlink">
                                 <h1>{this.props.songObj.title}</h1>
                             </Link>
                             </Col>

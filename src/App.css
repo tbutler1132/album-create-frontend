@@ -133,6 +133,11 @@ h2 {
   border-width: thin;
   border-color: thistle;
 }
+
+.phase-in-progress {
+  border-style: solid;
+  border-color: white;
+}
 /* #album-page-header {
   text-align: left;
   margin-left: 1%;

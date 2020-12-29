@@ -2,6 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
+import {selectPollChoices} from '../../../../Helpers'
+import PollImages from './PollImages'
+import PollBeats from '../PhaseTwo/PollBeats'
+
 
 class Poll extends React.Component {
 
@@ -11,16 +15,8 @@ class Poll extends React.Component {
         pollClicked: false
     }
     
-    
-    
-    // selectPollChoices = () => {
-    //         const shuffled = this.props.filterSubmissions(this.props.images, this.props.songObj).sort(() => 0.5 - Math.random());
-    //         let choices = shuffled.slice(0, 2);
-    //         return choices.map(choice => choice)
-    // }
-
-    selectImagePollChoices = () => {
-        return this.props.selectPollChoices(this.props.images, this.props.songObj)
+    selectPollChoices = () => {
+        return selectPollChoices(this.props.images, this.props.songObj, this.props.filteredSubmissions)
     }
 
     componentDidMount = () => {
@@ -47,9 +43,10 @@ class Poll extends React.Component {
         const newResult = {
             win: true,
             winnable_id: optionId,
-            winnable_type: "RefImg",
+            winnable_type: this.props.type,
             poll_id: this.state.pollId, // POST Poll in track
         }
+        console.log(newResult)
         const options = {
             method: "POST",
             headers: {
@@ -61,25 +58,13 @@ class Poll extends React.Component {
         fetch("http://localhost:3000/results", options)
         .then(r => r.json())
         .then(resultObj => {
+            console.log(resultObj)
             this.props.voteClickHandler(resultObj)
-            this.props.history.push(`/tracks/${this.props.songObj.id}/phaseone`)
+            this.props.history.push(`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}`)
         })
         this.clickHandler()
 
     }
-
-    // imageVoteClickHandler = () => {
-    //     const options = this.props.voteClickHandler("RefImg", this.state.pollId)
-    //     console.log(options)
-    //     fetch("http://localhost:3000/results", options)
-    //     .then(r => r.json())
-    //     .then(resultObj => {
-    //         console.log("Fetch", resultObj)
-    //         this.props.voteClickHandler(resultObj)
-    //         this.props.history.push(`/tracks/${this.props.songObj.id}`)
-    //     })
-    //     this.clickHandler()
-    // }
 
     clickHandler = () => {
         if (this.state.pollClicked === false){
@@ -91,16 +76,15 @@ class Poll extends React.Component {
     }
 
     render(){
-        const choices = this.selectImagePollChoices()
+        const choices = this.selectPollChoices()
+        console.log(this.props.songObj.phase)
         return(
-
-            <div>
-                <img src={choices[0].img_url} id={choices[0].id} alt="Ye" width="300" height="300" />
-                {choices[0] !== null ? <button name="1" onClick={this.voteClickHandler}>Vote</button> : null}
-                <img src={choices[1].img_url} id={choices[1].id} alt="Ye" width="300" height="300" />
-                {choices[1] !== null ? <button name="2" onClick={this.voteClickHandler}>Vote</button> : null}
-            </div>
-
+            <>
+{            this.props.songObj.phase === 1 ?
+            <PollImages choiceOne={choices[0]} choiceTwo={choices[1]} voteClickHandler={this.voteClickHandler}/>
+            :
+            <PollBeats choiceOne={choices[0]} choiceTwo={choices[1]} voteClickHandler={this.voteClickHandler}/>}
+            </>
         )
     }
 }
@@ -109,11 +93,11 @@ const msp = (state) => {
     return {images: state.images}
 }
 
-const mdp = (dispatch) => {
-    return {voteClickHandler: (resultObj) => dispatch({type: "add_image_result", payload: resultObj})}
-}
+// const mdp = (dispatch) => {
+//     return {voteClickHandler: (resultObj) => dispatch({type: "add_result", payload: resultObj})}
+// }
 
 export default compose (
-    connect(msp, mdp),
+    connect(msp),
     withRouter)
     (Poll)
