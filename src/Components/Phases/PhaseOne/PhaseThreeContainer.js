@@ -6,6 +6,7 @@ import { getBeats, getImages, getVocals} from '../../../Redux/action'
 import {filterSubmissions} from '../../../Helpers'
 import PhaseOneInProgress from './PhaseOne/PhaseOneInProgress'
 import PhaseOneComplete from './PhaseOne/PhaseOneComplete'
+import PhaseTwoComplete from './PhaseOne/PhaseTwoComplete'
 
 
 
@@ -42,8 +43,8 @@ class PhaseThree extends React.Component {
             <>
             
                 <>
-                <PhaseOneComplete winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
-                <PhaseOneComplete winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
+                <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
+                <PhaseTwoComplete songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
                 <PhaseOneInProgress type="Vocal" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredVocals()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
                 
                 

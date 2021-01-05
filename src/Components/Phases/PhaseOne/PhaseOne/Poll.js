@@ -16,7 +16,7 @@ class Poll extends React.Component {
     }
     
     selectPollChoices = () => {
-        return selectPollChoices(this.props.images, this.props.songObj, this.props.filteredSubmissions)
+        return selectPollChoices(this.props.filteredSubmissions)
     }
 
     componentDidMount = () => {
@@ -76,8 +76,8 @@ class Poll extends React.Component {
     }
 
     render(){
+        console.log(this.selectPollChoices())
         const choices = this.selectPollChoices()
-        console.log(this.props.songObj.phase)
         return(
             <>
 {            this.props.songObj.phase === 1 ?
@@ -92,10 +92,6 @@ class Poll extends React.Component {
 const msp = (state) => {
     return {images: state.images}
 }
-
-// const mdp = (dispatch) => {
-//     return {voteClickHandler: (resultObj) => dispatch({type: "add_result", payload: resultObj})}
-// }
 
 export default compose (
     connect(msp),

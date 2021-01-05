@@ -2,6 +2,7 @@ import React from 'react'
 import {Container, Row} from 'react-bootstrap'
 import LeaderboardHeader from './LeaderboardHeader'
 import LeaderBoardImages from './LeaderBoardImages'
+import AudioLeaderBoard from './AudioLeaderBoard'
 
 function LeaderBoard(props){
     
@@ -16,6 +17,7 @@ function LeaderBoard(props){
     }
 
     return (
+        props.songObj.phase === 1 ?
             <>
             <Container>
             {props.songObj.ref_imgs.length === 0 ? noSubmissions() : 
@@ -28,6 +30,20 @@ function LeaderBoard(props){
             }
             </Container>
             </>
+
+        :
+        <>
+        <Container>
+        {props.songObj.ref_imgs.length === 0 ? noSubmissions() : 
+            <div>
+                <LeaderboardHeader />
+                <Row>
+                    <AudioLeaderBoard filteredSubmissions={props.filteredSubmissions}/>
+                </Row>
+            </div>
+        }
+        </Container>
+        </>
         )
 }
 

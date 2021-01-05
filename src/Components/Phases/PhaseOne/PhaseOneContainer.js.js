@@ -35,7 +35,12 @@ class PhaseOne extends React.Component {
             
                 <>
                 {this.props.songObj.phase == 1 ? 
+                <>
+                <h3>Phase 1: Select references that will guide the creative direction of our song</h3>
+                <br></br>
+
                 <PhaseOneInProgress  type="RefImg" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredImages()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
+                </>
                 :
                 <PhaseOneComplete filteredSubmissions={this.filteredImages()}/>
                 }

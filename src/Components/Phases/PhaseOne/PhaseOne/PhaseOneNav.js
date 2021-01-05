@@ -5,15 +5,15 @@ function PhaseOneNav(props){
 
     return(
         <>
-        <NavLink to={`/tracks/${props.songObj.id}/${props.songObj.phase}/submitform`}>Submit an Image</NavLink>
-        <br></br>
         {props.songObj.ref_imgs.length > 0 ?
         <NavLink to={`/tracks/${props.songObj.id}/${props.songObj.phase}/poll`}>Create a poll</NavLink>
         :
         null
         }
+        <br></br>
+        <NavLink to={`/tracks/${props.songObj.id}/${props.songObj.phase}/submitform`}>Submit an Image</NavLink>
         <NavLink to={`/tracks/${props.songObj.id}/${props.songObj.phase}/images`}>
-        <h3>See all Images</h3>
+        <h5>See all Images</h5>
         </NavLink>
         </>
     )

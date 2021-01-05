@@ -6,48 +6,53 @@ function Welcome(props){
     return (
     <div >
         <Navbar variant="dark" bg="dark">
-        <Navbar.Brand href="/tracks">Navbar</Navbar.Brand>
-        <Nav>
+            <Navbar.Brand href="/tracks">Genesis</Navbar.Brand>
+            <Nav>
             
             
 
-            {props.user ?
-            <>
-            <NavLink style={{ textDecoration: 'none' }} to="/tracks">
+                {props.user ?
+                <>
+
+                    <NavLink style={{ textDecoration: 'none' }} to="/tracks">
+                            
+                                Album Page
+
+                    </NavLink>
+
+
+                    <NavLink to="/profile">
+                        <p>Your profile</p>
+                    </NavLink>
                     
-                        Album Page
-
-            </NavLink>
-
-            <p onClick={props.logoutHandler}>
-                Logout
-            </p>
-
-            <NavLink to="/profile">
-                Your proifile
-            </NavLink>
-            
-            </>
+                    <p onClick={props.logoutHandler}>
+                        Logout
+                    </p>
                 
-                :
-            <>
-            
-                <NavLink to="/login">
+                </>
                     
-                        Login
-                    
-                </NavLink>
-            
-            
-                <NavLink to="/signup">
-                    
-                        Create Account
-                    
-                </NavLink>
-            
-            </>
-            }
-        </Nav>
+                    :
+                <>
+                
+                    <NavLink to="/login">
+                        
+                            Login
+                        
+                    </NavLink>
+                
+                
+                    <NavLink to="/signup">
+                        
+                            Create Account
+                        
+                    </NavLink>
+                
+                </>
+                }
+
+
+            </Nav>
+
         </Navbar>
     </div>
     )

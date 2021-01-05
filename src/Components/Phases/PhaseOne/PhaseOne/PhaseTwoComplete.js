@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PhaseOneComplete(props){
+function PhaseTwoComplete(props){
     
     function winningSubmission (){
         return props.filteredSubmissions.find(submission => submission.selected === true)
@@ -8,10 +8,8 @@ function PhaseOneComplete(props){
 
 
     return(
-        <>
-            <img src={props.winningSubmission.img_url} alt="Ye" width="150" height="150" />
-        </>
+        <p>{props.winningSubmission.id}</p>
     )
 }
 
-export default PhaseOneComplete
+export default PhaseTwoComplete

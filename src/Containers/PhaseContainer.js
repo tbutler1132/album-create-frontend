@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getImages, getBeats, getVocals, getThreads } from '../Redux/action'
 import PhaseTwoContainer from '../Components/Phases/PhaseOne/PhaseTwoContainer.js'
 import PhaseThreeContainer from '../Components/Phases/PhaseOne/PhaseThreeContainer'
+import PhaseFourContainer from '../Components/Phases/PhaseOne/PhaseFourContainer'
 
 
 
@@ -31,6 +32,10 @@ class PhaseContainer extends React.Component {
 
     phaseThreeThread = () => {
         return this.filterCommentThreads().filter(thread => thread.phase === 3)
+    }
+
+    phaseFourThread = () => {
+        return this.filterCommentThreads().filter(thread => thread.phase === 4)
     }
 
     render(){
@@ -62,6 +67,14 @@ class PhaseContainer extends React.Component {
                 :
 
                 null}
+
+                {this.props.songObj.phase === 4 ?
+                
+                <PhaseFourContainer commentThread={this.phaseFourThread()} voteClickHandler={this.voteClickHandler} selectPollChoices={this.selectPollChoices} createLeaderBoard={this.createLeaderBoard} songObj={this.props.songObj} filterSubmissions={this.filterSubmissions} user={this.props.user}/>
+                :
+                
+                null}
+
  
                 </>
 

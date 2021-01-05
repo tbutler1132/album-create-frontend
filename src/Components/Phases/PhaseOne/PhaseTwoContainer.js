@@ -30,7 +30,6 @@ class PhaseTwo extends React.Component {
     }
 
     render(){
-        console.log(this.props.images)
         return(
             <>
             {this.props.beats.length === 0 ? <p>Loading</p> :
@@ -38,7 +37,7 @@ class PhaseTwo extends React.Component {
             
                 <>
      
-                <PhaseOneComplete winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
+                <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
                 <PhaseOneInProgress type="Beat" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredBeats()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
                 
                 

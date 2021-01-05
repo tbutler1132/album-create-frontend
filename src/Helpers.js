@@ -30,7 +30,7 @@
         // }
     }
 
-    export const selectPollChoices = (submissions, songObj, filteredSubmissions) => {
+    export const selectPollChoices = (filteredSubmissions) => {
         const shuffled = filteredSubmissions.sort(() => 0.5 - Math.random());
         let choices = shuffled.slice(0, 2);
         return choices.map(choice => choice)
