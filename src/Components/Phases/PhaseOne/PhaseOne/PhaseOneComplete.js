@@ -9,7 +9,7 @@ function PhaseOneComplete(props){
 
     return(
         <>
-            <img src={props.winningSubmission.img_url} alt="Ye" width="150" height="150" />
+            <img src={props.winningSubmission.img_url} alt="Ye" width="250" height="250" />
         </>
     )
 }

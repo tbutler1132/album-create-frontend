@@ -15,6 +15,9 @@ function PhaseOneNav(props){
         <NavLink to={`/tracks/${props.songObj.id}/${props.songObj.phase}/images`}>
         <h5>See all Images</h5>
         </NavLink>
+        <NavLink to={`/tracks/${props.songObj.id}/${props.songObj.phase}/thread`}>
+                    View Discussion
+        </NavLink>
         </>
     )
 }

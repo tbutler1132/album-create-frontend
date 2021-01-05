@@ -38,15 +38,16 @@ class PhaseOne extends React.Component {
                 <>
                 <h3>Phase 1: Select references that will guide the creative direction of our song</h3>
                 <br></br>
-
+ 
                 <PhaseOneInProgress  type="RefImg" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredImages()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
+ 
                 </>
                 :
                 <PhaseOneComplete filteredSubmissions={this.filteredImages()}/>
                 }
-                <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
+                {/* <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
                     View Discussion
-                </NavLink>
+                </NavLink> */}
                 
                 </>
 

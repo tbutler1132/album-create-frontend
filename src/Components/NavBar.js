@@ -1,18 +1,19 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {Navbar, Nav} from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 function Welcome(props){
     return (
     <div >
         <Navbar variant="dark" bg="dark">
-            <Navbar.Brand href="/tracks">Genesis</Navbar.Brand>
-            <Nav>
+            <Navbar.Brand >Genesis</Navbar.Brand>
             
             
 
                 {props.user ?
                 <>
+                <Nav>
 
                     <NavLink style={{ textDecoration: 'none' }} to="/tracks">
                             
@@ -21,18 +22,19 @@ function Welcome(props){
                     </NavLink>
 
 
-                    <NavLink to="/profile">
+                    <NavLink style={{ textDecoration: 'none' }} to="/profile">
                         <p>Your profile</p>
                     </NavLink>
                     
                     <p onClick={props.logoutHandler}>
                         Logout
                     </p>
-                
+                </Nav>
                 </>
                     
                     :
                 <>
+                <Nav>
                 
                     <NavLink to="/login">
                         
@@ -47,11 +49,11 @@ function Welcome(props){
                         
                     </NavLink>
                 
+                </Nav>
                 </>
                 }
 
 
-            </Nav>
 
         </Navbar>
     </div>

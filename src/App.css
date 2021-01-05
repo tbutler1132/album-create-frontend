@@ -138,6 +138,24 @@ h2 {
   border-style: solid;
   border-color: white;
 }
+
+.logout-button {
+  text-align: right;
+}
+
+.nav-buttons {
+  text-align: center;
+
+}
+
+.track-content {
+  border-style: double;
+  border-color: green;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
 /* #album-page-header {
   text-align: left;
   margin-left: 1%;

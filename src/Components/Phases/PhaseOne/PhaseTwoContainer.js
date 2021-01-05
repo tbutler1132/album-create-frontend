@@ -34,16 +34,13 @@ class PhaseTwo extends React.Component {
             <>
             {this.props.beats.length === 0 ? <p>Loading</p> :
             <>
+                <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
+                <h3>Phase 2: Select the beat that will guide the creative direction of our song</h3>
+                <br></br>
             
                 <>
      
-                <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
                 <PhaseOneInProgress type="Beat" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredBeats()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
-                
-                
-                <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
-                    View Discussion
-                </NavLink>
                 
                 </>
 
