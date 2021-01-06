@@ -79,12 +79,12 @@ class Poll extends React.Component {
         console.log(this.selectPollChoices())
         const choices = this.selectPollChoices()
         return(
-            <>
+            <div className="poll-images">
 {            this.props.songObj.phase === 1 ?
             <PollImages choiceOne={choices[0]} choiceTwo={choices[1]} voteClickHandler={this.voteClickHandler}/>
             :
             <PollBeats choiceOne={choices[0]} choiceTwo={choices[1]} voteClickHandler={this.voteClickHandler}/>}
-            </>
+            </div>
         )
     }
 }

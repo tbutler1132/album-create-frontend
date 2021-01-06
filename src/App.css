@@ -72,6 +72,7 @@
 
 .submit-form {
   margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 /* .song-description {
@@ -88,7 +89,7 @@
 }
 
 .track-navlink {
-  color:purple;
+  color:rebeccapurple;
 }
 
 #body {
@@ -156,14 +157,52 @@ h2 {
   margin-left: 5%;
   margin-right: 5%;
 }
-/* #album-page-header {
-  text-align: left;
-  margin-left: 1%;
+
+.generate-poll-button {
+  margin-bottom: 2%;
+}
+
+.track-nav-buttons {
+  margin-bottom: 2%;
+}
+
+.phase-description {
+  margin-top: 3%;
+}
+
+.winner-text {
+  color: rebeccapurple;
+  padding: 70px 0;
+  text-align: center;
+}
+
+.poll-images {
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.poll-option {
+  margin-bottom: 2%;
+}
+
+.poll-options {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .poll-button {
 } */
 
-/* h3 {
+.winning-image {
+  border-style: ridge;
+  border-width: thin;
+  border-radius: 2%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.winning-image-content {
+  margin-top: 2%;
   margin-bottom: 2%;
-} */
-/* .navbar {
-  
-} */
+}
