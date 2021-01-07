@@ -33,7 +33,15 @@ class Track extends React.Component{
         
                     render={() =>
                     {
-                        return <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
+                        return (
+                        <>
+                            <div className="track-header">
+                                <h1>{this.props.songObj.title}</h1>
+                                <p className="song-description">{this.props.songObj.description}</p>
+                            </div>
+                            <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
+                        </>
+                        )
                     }
 
                     } 

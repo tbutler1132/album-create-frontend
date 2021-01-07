@@ -3,18 +3,16 @@ import {Container, Col, Row} from 'react-bootstrap'
 import {NavLink} from 'react-browser-router'
 import ReactAudioPlayer from 'react-audio-player';
 
-class BeatIndex extends React.Component{
+class AudioIndex extends React.Component{
 
 
     renderAudio = () => {
         return this.props.filteredSubmissions.map(audio =>
-            <div className="audio-index">
-
-                <Col>
-                <p>{audio.title}</p>
-                <img src={audio.img_url} alt="Ye" width="200" height="200" />
-                </Col>
-
+            <div  key={audio.id}>
+                <ReactAudioPlayer
+                src={`http://localhost:3000/${audio.audio_data.url}`}
+                controls
+                />
             </div> 
             
             )
@@ -32,12 +30,9 @@ class BeatIndex extends React.Component{
                 {this.renderAudio()}
             </Row>
             </Container>
-            <NavLink to={`/tracks/${this.props.songObj.id}/phaseone`}>
-                Return to track page
-            </NavLink> 
             </>
         )
     }
 }
 
-export default BeatIndex
+export default AudioIndex

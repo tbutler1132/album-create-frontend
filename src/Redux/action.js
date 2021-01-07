@@ -18,7 +18,9 @@ export const getBeats = () => {
     return function (dispatch) {
         fetch("http://localhost:3000/beats")
         .then(response => response.json())
-        .then(data => dispatch({type: "add_beats_from_fetch", payload: data}))
+        .then(data => {
+            dispatch({type: "add_beats_from_fetch", payload: data})
+            console.log(data)})
    }
 }
 

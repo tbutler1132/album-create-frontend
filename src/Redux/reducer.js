@@ -52,6 +52,7 @@ function imagesReducer(currentState = defaultState.images, action) {
 function beatsReducer(currentState = defaultState.beats, action) {
     switch (action.type) {
         case "add_beats_from_fetch":
+            console.log(action.payload)
             return action.payload
         case "add_beat_result":
             console.log(action.payload)

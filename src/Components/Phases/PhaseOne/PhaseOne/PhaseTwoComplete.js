@@ -8,7 +8,7 @@ function PhaseTwoComplete(props){
         return props.filteredSubmissions.find(submission => submission.selected === true)
     }
 
-    console.log(props)
+
     return(
         <div className="winning-audio">
             <Row>

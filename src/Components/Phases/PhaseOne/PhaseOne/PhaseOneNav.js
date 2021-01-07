@@ -35,11 +35,25 @@ function PhaseOneNav(props){
                 }
                 </Col>
 
+
+
+
+                {props.songObj.phase === 1 ? 
                 <Col>
                     <LinkContainer to={`/tracks/${props.songObj.id}/${props.songObj.phase}/images`}>
                         <Button variant="outline-light">See all submissions</Button>
                     </LinkContainer>
                 </Col>
+                               :
+                               <LinkContainer to={`/tracks/${props.songObj.id}/${props.songObj.phase}/audio`}>
+                                   <Button variant="outline-light">See all</Button>
+                               </LinkContainer>
+                               }
+
+
+
+
+
                 
                 <Col>
                     <LinkContainer to={`/tracks/${props.songObj.id}/${props.songObj.phase}/thread`}>

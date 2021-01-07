@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import Thread from '../../../Components/Thread'
 import { getImages} from '../../../Redux/action'
 import {filterSubmissions} from '../../../Helpers'
-import PhaseOneInProgress from './PhaseOne/PhaseOneInProgress'
-import PhaseOneComplete from './PhaseOne/PhaseOneComplete'
+import PhaseInProgress from './PhaseOne/PhaseInProgress'
+// import PhaseOneComplete from './PhaseOne/PhaseComplete'
 
 
 
@@ -24,8 +24,6 @@ class PhaseOne extends React.Component {
         return this.props.commentThread.map(thread => <Thread key={thread.id} threadObj={thread} songObj={this.props.songObj} user={this.props.user}/>)
     }
 
-    // {this.props.songObj.phase === 1 ? "in prgoress" : "complete"}
-
     render(){
         console.log(this.props)
         return(
@@ -34,21 +32,17 @@ class PhaseOne extends React.Component {
             <>
             
                 <>
-                {this.props.songObj.phase == 1 ? 
+                {/* {this.props.songObj.phase == 1 ?  */}
                 <>
                 <h3>Phase 1: Select references that will guide the creative direction of our song</h3>
                 <br></br>
  
-                <PhaseOneInProgress  type="RefImg" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredImages()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
+                <PhaseInProgress  type="RefImg" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredImages()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
  
                 </>
-                :
+                {/* :
                 <PhaseOneComplete filteredSubmissions={this.filteredImages()}/>
-                }
-                {/* <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
-                    View Discussion
-                </NavLink> */}
-                
+                } */}
                 </>
 
             </>

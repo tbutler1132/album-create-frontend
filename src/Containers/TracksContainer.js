@@ -1,5 +1,5 @@
 import React from 'react'
-import Track from '../Components/Track'
+import Track from '../Track/Track'
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTracks } from '../Redux/action'

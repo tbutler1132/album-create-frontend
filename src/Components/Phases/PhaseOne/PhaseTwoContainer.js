@@ -4,8 +4,9 @@ import {connect} from 'react-redux'
 import Thread from '../../../Components/Thread'
 import { getBeats, getImages} from '../../../Redux/action'
 import {filterSubmissions} from '../../../Helpers'
-import PhaseOneInProgress from './PhaseOne/PhaseOneInProgress'
-import PhaseOneComplete from './PhaseOne/PhaseOneComplete'
+import PhaseInProgress from './PhaseOne/PhaseInProgress'
+import PhaseComplete from './PhaseOne/PhaseComplete'
+import {Spinner} from 'react-bootstrap'
 
 
 
@@ -30,18 +31,25 @@ class PhaseTwo extends React.Component {
     }
 
     render(){
-        console.log(this.filteredBeats())
+        console.log(this.props.beats)
         return(
             <>
-            {this.props.beats.length === 0 ? <p>Loading</p> :
+            {this.props.beats.length === 0 ? 
+
+            <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner> 
+            
+            :
+            
             <>
-                <PhaseOneComplete phase="Two" songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
+                <PhaseComplete phase="Two" songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
                 <h3 className="phase-description">Phase 2: Select the beat that will guide the creative direction of our song</h3>
                 <br></br>
             
                 <>
      
-                <PhaseOneInProgress type="Beat" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredBeats()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
+                <PhaseInProgress type="Beat" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredBeats()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
                 
                 </>
 

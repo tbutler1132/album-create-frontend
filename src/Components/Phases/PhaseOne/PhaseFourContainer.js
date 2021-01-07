@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import Thread from '../../../Components/Thread'
 import { getBeats, getImages, getVocals} from '../../../Redux/action'
 import {filterSubmissions} from '../../../Helpers'
-import PhaseOneInProgress from './PhaseOne/PhaseOneInProgress'
-import PhaseOneComplete from './PhaseOne/PhaseOneComplete'
+import PhaseInProgress from './PhaseOne/PhaseInProgress'
+import PhaseComplete from './PhaseOne/PhaseComplete'
 import PhaseTwoComplete from './PhaseOne/PhaseTwoComplete'
 import {Container, Row} from 'react-bootstrap'
 
@@ -50,7 +50,7 @@ class PhaseThree extends React.Component {
                 <>
                 <Container>
                     <Row>
-                        <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
+                        <PhaseComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
                     </Row>
                     <Row className="winning-audio">
                         <PhaseTwoComplete phase="two" songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>

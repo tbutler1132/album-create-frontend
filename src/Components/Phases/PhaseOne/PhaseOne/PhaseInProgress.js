@@ -4,10 +4,11 @@ import LeaderBoard from './LeaderBoard'
 import Poll from './Poll'
 import SubmitForm from './SubmitForm'
 import ImageIndex from '../../../ImageIndex'
+import AudioIndex from '../../../AudioIndex'
 import PhaseOneNav from './PhaseOneNav'
 import AudioSubmitForm from './AudioSubmitForm'
 
-class PhaseOneInProgress extends React.Component {
+class PhaseInProgress extends React.Component {
     render(){
         return(
             <>
@@ -18,6 +19,8 @@ class PhaseOneInProgress extends React.Component {
                         <Route path={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/submitform`} render={() => <SubmitForm user={this.props.user} songObj={this.props.songObj}/>}/>
                         <Route path={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/audiosubmitform`} render={() => <AudioSubmitForm user={this.props.user} songObj={this.props.songObj}/>}/>
                         <Route path={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/images`} render={() => <ImageIndex songObj={this.props.songObj} filteredSubmissions={this.props.filteredSubmissions}/>}/>
+                        <Route path={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/audio`} render={() => <AudioIndex songObj={this.props.songObj} filteredSubmissions={this.props.filteredSubmissions}/>}/>
+
                         <Route path={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`} render={() => this.props.commentThread}/>
                     </div>
                 </Switch>
@@ -27,4 +30,4 @@ class PhaseOneInProgress extends React.Component {
     }
 }
 
-export default PhaseOneInProgress
+export default PhaseInProgress

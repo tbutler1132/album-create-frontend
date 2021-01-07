@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import Thread from '../../../Components/Thread'
 import { getBeats, getImages, getVocals} from '../../../Redux/action'
 import {filterSubmissions} from '../../../Helpers'
-import PhaseOneInProgress from './PhaseOne/PhaseOneInProgress'
-import PhaseOneComplete from './PhaseOne/PhaseOneComplete'
+import PhaseInProgress from './PhaseOne/PhaseInProgress'
+import PhaseComplete from './PhaseOne/PhaseComplete'
 import PhaseTwoComplete from './PhaseOne/PhaseTwoComplete'
 
 
@@ -14,8 +14,8 @@ class PhaseThree extends React.Component {
 
     
     componentDidMount = () => {
-        this.props.fetchImages()
         this.props.fetchBeats()
+        this.props.fetchImages()
         this.props.fetchVocals()
     }
 
@@ -36,16 +36,16 @@ class PhaseThree extends React.Component {
     }
 
     render(){
-        console.log(this.props)
+        console.log(this.props.beats)
         return(
             <>
-            {this.props.vocals.length === 0 ? <p>Loading</p> :
+            {this.props.beats.length === 0 ? <p>Loading</p> :
             <>
             
                 <>
-                <PhaseOneComplete phase="one" songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
+                <PhaseComplete phase="one" songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
                 <PhaseTwoComplete phase="two" songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
-                <PhaseOneInProgress type="Vocal" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredVocals()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
+                <PhaseInProgress type="Vocal" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredVocals()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
                 
                 
                 <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
@@ -63,8 +63,8 @@ class PhaseThree extends React.Component {
 
 const msp = (state) => {
     return {
-        images: state.images,
         beats: state.beats,
+        images: state.images,
         vocals: state.vocals
     }
 }

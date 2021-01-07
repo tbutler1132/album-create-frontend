@@ -1,7 +1,7 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap'
 
-function PhaseOneComplete(props){
+function PhaseComplete(props){
     
     function winningSubmission (){
         return props.filteredSubmissions.find(submission => submission.selected === true)
@@ -22,4 +22,4 @@ function PhaseOneComplete(props){
     )
 }
 
-export default PhaseOneComplete
+export default PhaseComplete

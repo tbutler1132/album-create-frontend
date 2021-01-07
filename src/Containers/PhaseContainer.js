@@ -16,6 +16,7 @@ class PhaseContainer extends React.Component {
 
         this.props.fetchVocals()
         this.props.fetchThreads()
+        this.props.fetchBeats()
     } 
 
     filterCommentThreads = () => {
@@ -39,12 +40,9 @@ class PhaseContainer extends React.Component {
     }
 
     render(){
+        console.log(this.props.beats)
         return(
                 <>
-                <div className="track-header">
-                    <h1>{this.props.songObj.title}</h1>
-                    <p className="song-description">{this.props.songObj.description}</p>
-                </div>
                 {this.props.songObj.phase === 1 ?                
                 
                 <PhaseOneContainer className="phase-in-progress" commentThread={this.phaseOneThread()} voteClickHandler={this.voteClickHandler}  songObj={this.props.songObj}  user={this.props.user}/>

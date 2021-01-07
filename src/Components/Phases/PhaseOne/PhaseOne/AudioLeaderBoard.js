@@ -5,7 +5,7 @@ import ReactAudioPlayer from 'react-audio-player';
 
 function AudioLeaderBoard(props){
 
-    console.log(props.filteredSubmissions[2])
+
 
     function renderAudioLeaderBoard (){
         return createLeaderBoard(props.filteredSubmissions).map(element =>

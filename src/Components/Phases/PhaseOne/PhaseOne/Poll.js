@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
 import {selectPollChoices} from '../../../../Helpers'
 import PollImages from './PollImages'
-import PollBeats from '../PhaseTwo/PollBeats'
+import PollAudio from './PollAudio'
 
 
 class Poll extends React.Component {
@@ -83,7 +83,7 @@ class Poll extends React.Component {
 {            this.props.songObj.phase === 1 ?
             <PollImages choiceOne={choices[0]} choiceTwo={choices[1]} voteClickHandler={this.voteClickHandler}/>
             :
-            <PollBeats choiceOne={choices[0]} choiceTwo={choices[1]} voteClickHandler={this.voteClickHandler}/>}
+            <PollAudio choiceOne={choices[0]} choiceTwo={choices[1]} voteClickHandler={this.voteClickHandler}/>}
             </div>
         )
     }
