@@ -36,15 +36,15 @@ class PhaseThree extends React.Component {
     }
 
     render(){
-        console.log(this.props.vocals)
+        console.log(this.props)
         return(
             <>
             {this.props.vocals.length === 0 ? <p>Loading</p> :
             <>
             
                 <>
-                <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
-                <PhaseTwoComplete songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
+                <PhaseOneComplete phase="one" songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
+                <PhaseTwoComplete phase="two" songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
                 <PhaseOneInProgress type="Vocal" voteClickHandler={this.props.voteClickHandler} filteredSubmissions={this.filteredVocals()} commentThread={this.renderCommentThread()} songObj={this.props.songObj} user={this.props.user}/>
                 
                 

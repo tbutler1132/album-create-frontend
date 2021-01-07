@@ -27,7 +27,7 @@ class PhaseOne extends React.Component {
     // {this.props.songObj.phase === 1 ? "in prgoress" : "complete"}
 
     render(){
-        console.log(this.props.images)
+        console.log(this.props)
         return(
             <>
             {this.props.images.length === 0 ? <p>Loading</p> :

@@ -12,7 +12,7 @@ function PhaseOneComplete(props){
         <div className="winning-image">
         <Row className="winning-image-content">
             <Col className="winner-text" xs={6} md={4}>
-                <h2>Selected Image</h2>
+                <h2>Phase One Complete</h2>
             </Col>
             <Col xs={12} md={4}>
                 <img src={props.winningSubmission.img_url} alt="Ye" width="250" height="250" />

@@ -24,9 +24,15 @@ function PhaseOneNav(props){
 
             <Row className="track-nav-buttons">
                 <Col>
+                {props.songObj.phase === 1 ? 
                     <LinkContainer to={`/tracks/${props.songObj.id}/${props.songObj.phase}/submitform`}>
                         <Button variant="outline-light">Submit</Button>
                     </LinkContainer>
+                :
+                <LinkContainer to={`/tracks/${props.songObj.id}/${props.songObj.phase}/audiosubmitform`}>
+                    <Button variant="outline-light">Submit</Button>
+                </LinkContainer>
+                }
                 </Col>
 
                 <Col>

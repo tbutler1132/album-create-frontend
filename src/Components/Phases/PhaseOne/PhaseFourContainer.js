@@ -7,6 +7,7 @@ import {filterSubmissions} from '../../../Helpers'
 import PhaseOneInProgress from './PhaseOne/PhaseOneInProgress'
 import PhaseOneComplete from './PhaseOne/PhaseOneComplete'
 import PhaseTwoComplete from './PhaseOne/PhaseTwoComplete'
+import {Container, Row} from 'react-bootstrap'
 
 
 
@@ -47,9 +48,17 @@ class PhaseThree extends React.Component {
             <>
             
                 <>
-                <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
-                <PhaseTwoComplete songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
-                <PhaseTwoComplete songObj={this.props.songObj} winningSubmission={this.winningVocal()} filteredSubmissions={this.filteredVocals()}/>
+                <Container>
+                    <Row>
+                        <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
+                    </Row>
+                    <Row className="winning-audio">
+                        <PhaseTwoComplete phase="two" songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
+                    </Row>
+                    <Row className="winning-audio">
+                        <PhaseTwoComplete phase="three" songObj={this.props.songObj} winningSubmission={this.winningVocal()} filteredSubmissions={this.filteredVocals()}/>
+                    </Row>
+                </Container>
                 
                 <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
                     View Discussion

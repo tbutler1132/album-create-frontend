@@ -9,6 +9,7 @@
     "bootstrap": "^4.5.3",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
+    "react-audio-player": "^0.14.0",
     "react-bootstrap": "^1.4.0",
     "react-browser-router": "^2.1.2",
     "react-dom": "^17.0.1",

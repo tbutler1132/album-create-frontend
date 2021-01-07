@@ -19,21 +19,38 @@ class ImageIndex extends React.Component{
             )
     }
 
+    renderAudio = () => {
+        return this.props.filteredSubmissions.map(audio =>
+            <div key={audio.id} className="image-index">
+
+                <Col>
+                <p>{audio.id}</p>
+                </Col>
+
+            </div> 
+            
+            )
+    }
+
     render(){
-        console.log(this.props.filterImages)
         return (
             <>
             <Container>
-            <Row>
-                <h2>Super Boost: Click your favorite to give it a boost</h2>
-            </Row>
-            <Row>
-                {this.renderImages()}
-            </Row>
+                <Row>
+                    <h2>Super Boost: Click your favorite to give it a boost</h2>
+                </Row>
+                <Row>
+                    {this.props.songObj.phase === 1? 
+                    this.renderImages()
+                    :
+                    this.renderAudio()
+                    }
+                </Row>
             </Container>
-            <NavLink to={`/tracks/${this.props.songObj.id}/phaseone`}>
+
+            {/* <NavLink to={`/tracks/${this.props.songObj.id}/1`}>
                 Return to track page
-            </NavLink> 
+            </NavLink>  */}
             </>
         )
     }

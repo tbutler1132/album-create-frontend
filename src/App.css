@@ -45,6 +45,7 @@
 .track-container {
   border-style: solid;
   border-width: thin;
+  border-radius: 2%;
   margin-top: 2%;
   margin-left: 5%;
   margin-right: 5%;
@@ -114,6 +115,7 @@ img
   border-color: white;
   margin-bottom: 5%;
   border-width: thick;
+  border-radius: 2%;
 }
 
 h2 {
@@ -150,12 +152,13 @@ h2 {
 }
 
 .track-content {
-  border-style: double;
+  border-style: solid;
   border-color: rgb(54, 61, 54);
   margin-bottom: 2%;
   margin-top: 2%;
   margin-left: 5%;
   margin-right: 5%;
+  border-radius: 2%;
 }
 
 .generate-poll-button {
@@ -171,7 +174,7 @@ h2 {
 }
 
 .winner-text {
-  color: rebeccapurple;
+  color: green;
   padding: 70px 0;
   text-align: center;
 }
@@ -205,4 +208,13 @@ h2 {
 .winning-image-content {
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+.winning-audio {
+  margin-top: 2%;
+  border-style: ridge;
+  border-width: thin;
+  border-radius: 2%;
+  margin-right: 10%;
+  margin-left: 10%;
 }

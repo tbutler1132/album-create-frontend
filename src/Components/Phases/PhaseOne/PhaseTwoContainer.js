@@ -30,11 +30,12 @@ class PhaseTwo extends React.Component {
     }
 
     render(){
+        console.log(this.filteredBeats())
         return(
             <>
             {this.props.beats.length === 0 ? <p>Loading</p> :
             <>
-                <PhaseOneComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
+                <PhaseOneComplete phase="Two" songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredBeats()}/>
                 <h3 className="phase-description">Phase 2: Select the beat that will guide the creative direction of our song</h3>
                 <br></br>
             

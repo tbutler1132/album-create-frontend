@@ -36,7 +36,6 @@ function LeaderBoard(props){
         <Container>
         {props.songObj.ref_imgs.length === 0 ? noSubmissions() : 
             <div>
-                <LeaderboardHeader />
                 <Row>
                     <AudioLeaderBoard filteredSubmissions={props.filteredSubmissions}/>
                 </Row>
