@@ -8,6 +8,7 @@ import Welcome from './Components/Welcome'
 import NavBar from './Components/NavBar'
 import Signup from './Components/Signup'
 import UserProfile from './Components/UserProfile'
+import ParticlesTest from './ParticlesTest'
 // import SubmitForm from './Components/SubmitForm'
 
 class App extends React.Component{
@@ -71,7 +72,10 @@ class App extends React.Component{
 
   render(){
     return(
-      <>
+      <div className="App" >
+      {/* <div style={{ position: 'absolute'}}>
+        <ParticlesTest height="100vh" width="100vw" />
+      </div> */}
 
       <NavBar user={this.state.user} logoutHandler={this.logoutHandler}/>
 
@@ -83,7 +87,8 @@ class App extends React.Component{
         <Route path="/tracks" render={() => <TracksContainer user={this.state.user} />} />
         <Route path="/profile" render={() => <UserProfile user={this.state.user} />} />
       </Switch>
-      </>
+      {/* <ParticlesTest /> */}
+      </div>
     )
   }
 

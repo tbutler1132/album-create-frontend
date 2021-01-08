@@ -218,3 +218,9 @@ h2 {
   margin-right: 10%;
   margin-left: 10%;
 }
+
+.particles {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}

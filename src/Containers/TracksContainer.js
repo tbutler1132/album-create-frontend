@@ -4,6 +4,8 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTracks } from '../Redux/action'
 import { compose } from 'redux'
+import ParticlesTest from '../ParticlesTest'
+import Particles from 'react-particles-js'
 
 
 class TracksContainer extends React.Component {
@@ -32,9 +34,13 @@ class TracksContainer extends React.Component {
                         }}/>
                         <Route path="/tracks" render={() =>
                         <>
+                            <div style={{ position: 'absolute'}}>
+                                <ParticlesTest height="100vh" width="100vw" />
+                            </div>
+
                             <h1 id="album-page-header">Album 1</h1> 
                             <div className="track-container">
-                            {this.renderTracks()}
+                                {this.renderTracks()}
                             </div>
                         </>   
                             

@@ -3,7 +3,6 @@ import PhaseContainer from '../Containers/PhaseContainer'
 import {Link, Route, Switch} from 'react-router-dom'
 import {Container, Row, Col} from 'react-bootstrap'
 
-
 class Track extends React.Component{
 
     renderPhaseDescriptions = () => {
@@ -51,6 +50,7 @@ class Track extends React.Component{
                 
                   
                         <>
+
                         <Container >
                             <Row>
                             <Col>

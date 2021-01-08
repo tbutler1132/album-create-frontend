@@ -6,35 +6,54 @@ import { LinkContainer } from 'react-router-bootstrap'
 function Welcome(props){
     return (
     <div >
-        <Navbar variant="dark" bg="dark">
-            <Navbar.Brand >Genesis</Navbar.Brand>
+        {/* <Navbar variant="dark" bg="dark">
+            <Navbar.Brand >Genesis</Navbar.Brand> */}
             
             
 
                 {props.user ?
                 <>
-                <Nav>
+                
+                    <Navbar bg="light" variant="light">
+                        <Navbar.Brand >TuneCollab</Navbar.Brand>
+                        
+                        <Nav className="mr-auto">
 
-                    <NavLink style={{ textDecoration: 'none' }} to="/tracks">
-                            
-                                Album Page
+                            <LinkContainer to="/tracks">
+                                <Nav.Link >Album</Nav.Link>
+                            </LinkContainer>
 
-                    </NavLink>
+                            <LinkContainer to="/profile">
+                                <Nav.Link >Profile</Nav.Link>
+                            </LinkContainer>
 
-
-                    <NavLink style={{ textDecoration: 'none' }} to="/profile">
-                        <p>Your profile</p>
-                    </NavLink>
-                    
-                    <p onClick={props.logoutHandler}>
-                        Logout
-                    </p>
-                </Nav>
+                            <Nav.Link onClick={props.logoutHandler}>Logout</Nav.Link>
+                        </Nav>
+                    </Navbar>
+                
                 </>
                     
                     :
                 <>
-                <Nav>
+                    <Navbar bg="light" variant="light">
+                        <Navbar.Brand href="#home">TuneCollab</Navbar.Brand>
+                        
+                        <Nav className="mr-auto">
+
+                            <LinkContainer to="/login">
+                                <Nav.Link >Login</Nav.Link>
+                            </LinkContainer>
+
+                            <LinkContainer to="/signup">
+                                <Nav.Link >Signup</Nav.Link>
+                            </LinkContainer>
+                        </Nav>
+                    </Navbar>
+                
+                
+                
+                
+                {/* <Nav>
                 
                     <NavLink to="/login">
                         
@@ -49,13 +68,13 @@ function Welcome(props){
                         
                     </NavLink>
                 
-                </Nav>
+                </Nav> */}
                 </>
                 }
 
 
 
-        </Navbar>
+        {/* </Navbar> */}
     </div>
     )
 }

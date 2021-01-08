@@ -10,7 +10,8 @@ class UserProfile extends React.Component{
         const contributionScore = this.totalContributions() * 20
         const pollScore = this.props.user.polls.length / 2
         const commentScore = this.props.user.comments.length
-        return contributionScore + pollScore + commentScore
+        const rep = contributionScore + pollScore + commentScore
+        return Math.round(rep)
     }
 
     userStats = () => {
