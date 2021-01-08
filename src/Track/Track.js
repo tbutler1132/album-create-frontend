@@ -2,6 +2,7 @@ import React from 'react'
 import PhaseContainer from '../Containers/PhaseContainer'
 import {Link, Route, Switch} from 'react-router-dom'
 import {Container, Row, Col} from 'react-bootstrap'
+import {withRouter} from 'react-browser-router'
 
 class Track extends React.Component{
 
@@ -23,6 +24,10 @@ class Track extends React.Component{
         }
     }
 
+    clickHandler = () => {
+        this.props.history.push(`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}`)
+    }
+
     render(){
 
         return (
@@ -35,7 +40,7 @@ class Track extends React.Component{
                         return (
                         <>
                             <div className="track-header">
-                                <h1>{this.props.songObj.title}</h1>
+                                <h1 onClick={this.clickHandler}>{this.props.songObj.title}</h1>
                                 <p className="song-description">{this.props.songObj.description}</p>
                             </div>
                             <PhaseContainer songObj={this.props.songObj} user={this.props.user}/>
@@ -75,5 +80,5 @@ class Track extends React.Component{
 
 }
 
-export default Track
+export default withRouter(Track)
 

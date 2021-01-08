@@ -25,13 +25,20 @@ class Login extends Component{
         return (
 
             <div className="login-form">
-                <form onSubmit={this.submitHandler}>
-                        <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler}/>
-                        <input type='password' name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
-                        <Button>
-                        <input type='submit' name="submit" value="Login"/>
-                        </Button>
-                </form>
+                <Form onSubmit={this.submitHandler}>
+                    <Form.Group>
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.changeHandler}/>
+                    </Form.Group>
+
+                    <Form.Group>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type='password' name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
+                    </Form.Group>
+                            <Button variant="light" type='submit' name="submit" value="Login">
+                                Login
+                            </Button>
+                </Form>
             </div>
         )
     }

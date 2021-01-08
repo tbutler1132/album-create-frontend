@@ -42,7 +42,7 @@ class SubmitComment extends React.Component {
             <div className="submit-comment-form">
                 <form onSubmit={this.submitHandler}>
                         <input type="text" name="content" placeholder="comment" value={this.state.content} onChange={this.changeHandler}/>
-                        <input type='submit' name="submit" value="Submit Content"/>
+                        <input type='submit' name="submit" value="Submit Comment"/>
                 </form>
             </div>
             

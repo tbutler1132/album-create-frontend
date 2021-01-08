@@ -37,6 +37,10 @@
   }
 }
 
+* {
+  font-family: electrolize;
+}
+
 .track-index {
   text-align: center;
   margin-top: 5%;
@@ -82,11 +86,12 @@
 } */
 
 .login-form {
+  display: block;
   text-align: center;
-  margin-top: auto; 
-  margin-bottom: auto;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 25%;
 }
 
 .track-navlink {
@@ -100,7 +105,7 @@
 
 img
 {
-    box-shadow: 0px 0px 10px purple;
+    box-shadow: 0px 0px 5px rgb(209, 204, 209);
 }
 
 .image-index {
@@ -114,7 +119,7 @@ img
   border-style: solid;
   border-color: white;
   margin-bottom: 5%;
-  border-width: thick;
+  border-width: thin;
   border-radius: 2%;
 }
 
@@ -152,13 +157,13 @@ h2 {
 }
 
 .track-content {
-  border-style: solid;
-  border-color: rgb(54, 61, 54);
+  /* border-style: solid;
+  border-color: rgb(146, 150, 146); */
   margin-bottom: 2%;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 5%;
   margin-right: 5%;
-  border-radius: 2%;
+  /* border-radius: 2%; */
 }
 
 .generate-poll-button {

@@ -36,8 +36,7 @@ class ImageIndex extends React.Component{
         return (
             <>
             <Container>
-                <Row>
-                    <h2>Super Boost: Click your favorite to give it a boost</h2>
+                <Row> 
                 </Row>
                 <Row>
                     {this.props.songObj.phase === 1? 

@@ -27,7 +27,7 @@ function Welcome(props){
                                 <Nav.Link >Profile</Nav.Link>
                             </LinkContainer>
 
-                            <Nav.Link onClick={props.logoutHandler}>Logout</Nav.Link>
+                            <Nav.Link className="logout-button" onClick={props.logoutHandler}>Logout</Nav.Link>
                         </Nav>
                     </Navbar>
                 
