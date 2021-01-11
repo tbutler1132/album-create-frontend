@@ -20,7 +20,7 @@ export const getBeats = () => {
         .then(response => response.json())
         .then(data => {
             dispatch({type: "add_beats_from_fetch", payload: data})
-            console.log(data)})
+         })
    }
 }
 

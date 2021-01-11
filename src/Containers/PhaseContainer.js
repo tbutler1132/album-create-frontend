@@ -40,7 +40,6 @@ class PhaseContainer extends React.Component {
     }
 
     render(){
-        console.log(this.props.beats)
         return(
                 <>
                 {this.props.songObj.phase === 1 ?                

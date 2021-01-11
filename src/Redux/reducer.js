@@ -38,7 +38,7 @@ function imagesReducer(currentState = defaultState.images, action) {
         case "add_image":
             return [...currentState, action.payload]
         case "add_result":
-            console.log(action.payload)
+    
             const image = currentState.find(image => image.id === action.payload.winnable.id)
             const imageIndex = currentState.indexOf(image)
             const newArray = currentState.slice()
@@ -52,10 +52,10 @@ function imagesReducer(currentState = defaultState.images, action) {
 function beatsReducer(currentState = defaultState.beats, action) {
     switch (action.type) {
         case "add_beats_from_fetch":
-            console.log(action.payload)
+
             return action.payload
         case "add_beat_result":
-            console.log(action.payload)
+
             const beat = currentState.find(beat => beat.id === action.payload.winnable.id)
             const beatIndex = currentState.indexOf(beat)
             const newArray = currentState.slice()
@@ -71,7 +71,7 @@ function vocalsReducer(currentState = defaultState.vocals, action) {
         case "add_vocals_from_fetch":
             return action.payload
         case "add_vocal_result":
-            console.log(action.payload)
+   
             const vocal = currentState.find(vocal => vocal.id === action.payload.winnable.id)
             const vocalIndex = currentState.indexOf(vocal)
             const newArray = currentState.slice()
@@ -95,7 +95,7 @@ function threadsReducer(currentState = defaultState.threads, action) {
             const threadIndex = currentState.indexOf(thread)
             const newArray = currentState.slice()
             const updatedResults = newArray[threadIndex].comments.push(action.payload)
-            console.log("new array", newArray)
+   
             return newArray
         default:
             return currentState

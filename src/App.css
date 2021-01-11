@@ -179,7 +179,7 @@ h2 {
 }
 
 .winner-text {
-  color: green;
+  color: rgb(124, 158, 124);
   padding: 70px 0;
   text-align: center;
 }
@@ -203,9 +203,9 @@ h2 {
 } */
 
 .winning-image {
-  border-style: ridge;
+  /* border-style: ridge;
   border-width: thin;
-  border-radius: 2%;
+  border-radius: 2%; */
   margin-right: 10%;
   margin-left: 10%;
 }
@@ -216,10 +216,10 @@ h2 {
 }
 
 .winning-audio {
-  margin-top: 2%;
-  border-style: ridge;
+  margin-top: 4%;
+  /* border-style: ridge;
   border-width: thin;
-  border-radius: 2%;
+  border-radius: 2%; */
   margin-right: 10%;
   margin-left: 10%;
 }

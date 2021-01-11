@@ -25,7 +25,6 @@ class PhaseOne extends React.Component {
     }
 
     render(){
-        console.log(this.props)
         return(
             <>
             {this.props.images.length === 0 ? <p>Loading</p> :

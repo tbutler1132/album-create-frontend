@@ -48,21 +48,15 @@ class PhaseThree extends React.Component {
             <>
             
                 <>
-                <Container>
-                    <Row>
+              
+                 
                         <PhaseComplete songObj={this.props.songObj} winningSubmission={this.winningImage()} filteredSubmissions={this.filteredVocals()}/>
-                    </Row>
-                    <Row className="winning-audio">
+             
                         <PhaseTwoComplete phase="two" songObj={this.props.songObj} winningSubmission={this.winningBeat()} filteredSubmissions={this.filteredVocals()}/>
-                    </Row>
-                    <Row className="winning-audio">
+
                         <PhaseTwoComplete phase="three" songObj={this.props.songObj} winningSubmission={this.winningVocal()} filteredSubmissions={this.filteredVocals()}/>
-                    </Row>
-                </Container>
-                
-                <NavLink to={`/tracks/${this.props.songObj.id}/${this.props.songObj.phase}/thread`}>
-                    View Discussion
-                </NavLink>
+                 
+          
                 
                 </>
 
